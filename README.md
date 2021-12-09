@@ -77,3 +77,7 @@ There is a special offer on Bananas: if you buy 3 you only pay for 2.
 There is a special offer on Americanos: they are 4 for £6.50.
 
 Pricing and special offers change frequently.
+
+## Todo
+
+Optimise the getSpecialOffer() function having better performance in production scale environment.

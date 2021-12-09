@@ -36,7 +36,7 @@ describe("checkout", function(){
 		assert.equal(checkout.getTotalPrice(), 0);
 	});
 
-	it ("get a discount", function(){
+	it ("get a special offer", function(){
 		checkout.emptyCart();
 		checkout.scan("Americano");
 		checkout.scan("Americano");
@@ -45,7 +45,7 @@ describe("checkout", function(){
 		assert.equal(checkout.getTotalPrice(), 6.5);
 	});
 
-	it ("get multiple discounts", function(){
+	it ("get multiple special offers", function(){
 		checkout.emptyCart();
 		checkout.scan("Americano");
 		checkout.scan("Americano");

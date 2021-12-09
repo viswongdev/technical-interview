@@ -40,19 +40,25 @@ module.exports = function(){
 			});
 		},
 		cart: [],
+		emptyCart: function(){
+			this.cart.length = 0;
+		},
 		getTotalPrice: function(){
 			let totalPrice = 0;
 			this.cart.map((item) => totalPrice += item.price);
-			return totalPrice - this.getDiscount();
+			return totalPrice - this.getSpecialOffer();
 		},
-		getDiscount: function(){
+		getSpecialOffer: function(){
 			let totalDiscount = 0;
 			specialOfferList.map((specialOffer) => {
 				let totalAmount = 0;
 				this.cart.map((item) => {
 					if (item.name === specialOffer.name) totalAmount++;
 				});
-				if (totalAmount === specialOffer.amount) totalDiscount += specialOffer.discount;
+				while (totalAmount >= specialOffer.amount) {
+					totalDiscount += specialOffer.discount;
+					totalAmount -= specialOffer.amount;
+				}
 			});
 			return totalDiscount;
 		}

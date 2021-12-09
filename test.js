@@ -13,23 +13,50 @@ describe("checkout", function(){
 		assert.doesNotThrow(
 			function() {
 				checkout.scan("Apple");
-				// checkout.scan("Banana");
-				// checkout.scan("Banana");
-				// checkout.scan("Banana");
-				// checkout.scan("Americano");
-				// checkout.scan("Americano");
-				// checkout.scan("Americano");
-				// checkout.scan("Americano");
 			}
 		);
 	});
 
-	it (`I can get the total price without an error being thrown `, function(){
+	it ("I can scan multiple items without an error being thrown", function(){
 		assert.doesNotThrow(
 			function() {
-				console.log(`Total price: ${checkout.getTotalPrice()}`);
+				checkout.scan("Apple");
+				checkout.scan("Banana");
+				checkout.scan("Flat White");
 			}
 		);
 	});
+
+	it ("get the total price 6.7", function(){
+		assert.equal(checkout.getTotalPrice(), 6.7);
+	});
+
+	it ("empty the cart", function(){
+		checkout.emptyCart();
+		assert.equal(checkout.getTotalPrice(), 0);
+	});
+
+	it ("get a discount", function(){
+		checkout.emptyCart();
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		assert.equal(checkout.getTotalPrice(), 6.5);
+	});
+
+	it ("get multiple discounts", function(){
+		checkout.emptyCart();
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		checkout.scan("Americano");
+		assert.equal(checkout.getTotalPrice(), 13);
+	});
+
 
 });

@@ -13,6 +13,21 @@ describe("checkout", function(){
 		assert.doesNotThrow(
 			function() {
 				checkout.scan("Apple");
+				// checkout.scan("Banana");
+				// checkout.scan("Banana");
+				// checkout.scan("Banana");
+				// checkout.scan("Americano");
+				// checkout.scan("Americano");
+				// checkout.scan("Americano");
+				// checkout.scan("Americano");
+			}
+		);
+	});
+
+	it (`I can get the total price without an error being thrown `, function(){
+		assert.doesNotThrow(
+			function() {
+				console.log(`Total price: ${checkout.getTotalPrice()}`);
 			}
 		);
 	});
